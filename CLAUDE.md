@@ -120,3 +120,18 @@ Plan Mode에서 계획 수립 후 반드시 `ExitPlanMode` 호출. 계획 파일
 **증상**: `crypto.randomUUID()` — Safari <15.4, iOS <15.4, Chrome <92 미지원. 구형 기기에서 TypeError.
 **교훈**: 최신 Web API 사용 시 **반드시 feature detection + 폴백** 구현.
 **How to apply**: `typeof crypto?.randomUUID === 'function'` 체크 후 Math.random 기반 UUID v4 폴백.
+
+### L-13: "불가능"이라고 말하기 전에 도구 전수 조사
+**증상**: `gh` CLI가 PATH에 없다고 Pages 활성화를 사용자에게 떠넘김 → 실제로는 `C:\Program Files\GitHub CLI\gh.exe`에 설치되어 있었음.
+**교훈**: "안 된다"고 하기 전에 ① `which`/경로 스캔 ② env var(`GITHUB_TOKEN` 등) ③ git config credential helper ④ MCP/Skill 도구까지 탐색.
+**How to apply**: CLI 부재 판정 시 `ls "/c/Program Files/"` + `git config --list | grep credential`까지 확인.
+
+### L-14: GitHub Pages SPA 배포 3종 세트
+**증상**: GitHub Pages 서브패스 배포에서 vite `base` 미설정 시 asset 404, Router `basename` 미설정 시 라우팅 깨짐, 404.html 미생성 시 직접 URL 접근 시 실제 404.
+**교훈**: Pages 서브패스 배포는 ① `vite.config.ts base: '/repo/'` ② `<BrowserRouter basename={import.meta.env.BASE_URL}>` ③ build 후 `cp dist/index.html dist/404.html` 3종 세트 필수.
+**How to apply**: `deploy.yml`에 `cp dist/index.html dist/404.html` 단계 추가, `base`/`basename`은 배포 레포명과 일치.
+
+### L-15: 무료 플랜 Pages는 public 레포만 지원
+**증상**: `ready-deploy-project-*` private 레포에 Pages API 호출 → HTTP 422 `"Your current plan does not support GitHub Pages for this repository"`.
+**교훈**: 배포용 레포는 public으로 전환 필요. 전환 전 **반드시 시크릿 스캔** (`.env*` 추적 여부, SERVICE_ROLE/ghp_/sk- 패턴, Dockerfile hardcode).
+**How to apply**: `gh repo edit <repo> --visibility public --accept-visibility-change-consequences` 전에 `git ls-files | grep -iE "\.env|secret"` + regex 스캔.
