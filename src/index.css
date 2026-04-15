@@ -1,0 +1,442 @@
+/* Pretendard font is preloaded in index.html — no @import needed */
+
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+/* 
+  Toss-Style Korean Wedding Budget Calculator Design System
+  Clean, minimal fintech UI with soft shadows and plenty of whitespace
+*/
+
+@layer base {
+  :root {
+    /* Toss Blue Primary */
+    --primary: 213 100% 50%;
+    --primary-foreground: 0 0% 100%;
+    
+    /* Clean whites and grays */
+    --background: 0 0% 100%;
+    --foreground: 220 15% 15%;
+    
+    --card: 0 0% 100%;
+    --card-foreground: 220 15% 15%;
+    
+    --popover: 0 0% 100%;
+    --popover-foreground: 220 15% 15%;
+    
+    /* Soft Gray for secondary elements */
+    --secondary: 220 14% 96%;
+    --secondary-foreground: 220 15% 25%;
+    
+    --muted: 220 14% 96%;
+    --muted-foreground: 220 10% 50%;
+    
+    --accent: 220 14% 96%;
+    --accent-foreground: 220 15% 15%;
+    
+    --destructive: 0 84% 60%;
+    --destructive-foreground: 0 0% 100%;
+    
+    /* Success color for paid items */
+    --success: 145 65% 42%;
+    --success-foreground: 0 0% 100%;
+    
+    /* Warning color for pending items */
+    --warning: 38 92% 50%;
+    --warning-foreground: 0 0% 100%;
+    
+    --border: 220 13% 91%;
+    --input: 220 13% 91%;
+    --ring: 213 100% 50%;
+    
+    --radius: 1rem;
+    
+    /* Sidebar variables */
+    --sidebar-background: 0 0% 98%;
+    --sidebar-foreground: 220 10% 26%;
+    --sidebar-primary: 213 100% 50%;
+    --sidebar-primary-foreground: 0 0% 100%;
+    --sidebar-accent: 220 14% 96%;
+    --sidebar-accent-foreground: 220 15% 15%;
+    --sidebar-border: 220 13% 91%;
+    --sidebar-ring: 213 100% 50%;
+
+    /* Chart colors for donut chart */
+    --chart-1: 213 100% 50%;
+    --chart-2: 340 75% 55%;
+    --chart-3: 145 65% 42%;
+    --chart-4: 38 92% 50%;
+    --chart-5: 262 83% 58%;
+  }
+
+  .dark {
+    --primary: 213 100% 60%;
+    --primary-foreground: 220 15% 10%;
+    
+    --background: 220 15% 8%;
+    --foreground: 220 10% 95%;
+    
+    --card: 220 15% 12%;
+    --card-foreground: 220 10% 95%;
+    
+    --popover: 220 15% 12%;
+    --popover-foreground: 220 10% 95%;
+    
+    --secondary: 220 15% 18%;
+    --secondary-foreground: 220 10% 90%;
+    
+    --muted: 220 15% 18%;
+    --muted-foreground: 220 10% 60%;
+    
+    --accent: 220 15% 18%;
+    --accent-foreground: 220 10% 95%;
+    
+    --destructive: 0 62% 50%;
+    --destructive-foreground: 0 0% 100%;
+    
+    --success: 145 60% 50%;
+    --success-foreground: 0 0% 100%;
+    
+    --warning: 38 85% 55%;
+    --warning-foreground: 0 0% 100%;
+    
+    --border: 220 15% 20%;
+    --input: 220 15% 20%;
+    --ring: 213 100% 60%;
+    
+    --sidebar-background: 220 15% 10%;
+    --sidebar-foreground: 220 10% 90%;
+    --sidebar-primary: 213 100% 60%;
+    --sidebar-primary-foreground: 220 15% 10%;
+    --sidebar-accent: 220 15% 15%;
+    --sidebar-accent-foreground: 220 10% 95%;
+    --sidebar-border: 220 15% 20%;
+    --sidebar-ring: 213 100% 60%;
+
+    --chart-1: 213 100% 60%;
+    --chart-2: 340 75% 60%;
+    --chart-3: 145 60% 50%;
+    --chart-4: 38 85% 55%;
+    --chart-5: 262 83% 65%;
+  }
+}
+
+@layer base {
+  * {
+    @apply border-border;
+  }
+  
+  html {
+    font-family: 'Pretendard Variable', Pretendard, -apple-system, BlinkMacSystemFont, system-ui, Roboto, 'Helvetica Neue', 'Segoe UI', 'Apple SD Gothic Neo', 'Noto Sans KR', 'Malgun Gothic', 'Apple Color Emoji', 'Segoe UI Emoji', 'Segoe UI Symbol', sans-serif;
+  }
+  
+  body {
+    @apply bg-background text-foreground antialiased;
+    padding-top: env(safe-area-inset-top);
+    padding-left: env(safe-area-inset-left);
+    padding-right: env(safe-area-inset-right);
+    padding-bottom: env(safe-area-inset-bottom);
+  }
+}
+
+@layer utilities {
+  /* Hide scrollbar for Chrome, Safari and Opera */
+  .scrollbar-hide::-webkit-scrollbar {
+    display: none;
+  }
+  
+  /* Hide scrollbar for IE, Edge and Firefox */
+  .scrollbar-hide {
+    -ms-overflow-style: none;  /* IE and Edge */
+    scrollbar-width: none;  /* Firefox */
+  }
+  
+  /* Custom shadow for Toss-style cards */
+  .shadow-toss {
+    box-shadow: 0 2px 8px 0 rgba(0, 0, 0, 0.04), 0 4px 16px 0 rgba(0, 0, 0, 0.04);
+  }
+
+  .shadow-toss-lg {
+    box-shadow: 0 4px 16px 0 rgba(0, 0, 0, 0.06), 0 8px 32px 0 rgba(0, 0, 0, 0.06);
+  }
+
+  .shadow-toss-sm {
+    box-shadow: 0 1px 4px 0 rgba(0, 0, 0, 0.04), 0 2px 8px 0 rgba(0, 0, 0, 0.03);
+  }
+
+  /* [CL-IMPROVE-7TASKS-20260330] Toss UI/UX 유틸리티 */
+  .toss-card {
+    @apply bg-card rounded-2xl p-6 shadow-toss border border-border/50;
+  }
+  .toss-title {
+    @apply text-lg font-semibold text-foreground;
+  }
+  .toss-desc {
+    @apply text-sm text-muted-foreground leading-relaxed;
+  }
+  .toss-cta {
+    @apply w-full h-12 rounded-xl font-semibold transition-all duration-200 active:scale-[0.98];
+  }
+
+  /* Content visibility for virtualization */
+  .content-auto {
+    content-visibility: auto;
+    contain-intrinsic-size: 0 200px;
+  }
+  
+  /* Smooth number animation */
+  .animate-number {
+    transition: all 0.5s cubic-bezier(0.4, 0, 0.2, 1);
+  }
+  
+  /* Floating bar animation */
+  .animate-float-up {
+    animation: floatUp 0.4s cubic-bezier(0.4, 0, 0.2, 1);
+  }
+  
+  @keyframes floatUp {
+    from {
+      opacity: 0;
+      transform: translateY(20px);
+    }
+    to {
+      opacity: 1;
+      transform: translateY(0);
+    }
+  }
+  
+  /* Page transition */
+  .page-transition {
+    animation: pageIn 0.3s cubic-bezier(0.4, 0, 0.2, 1);
+  }
+  
+  @keyframes pageIn {
+    from {
+      opacity: 0;
+      transform: translateX(20px);
+    }
+    to {
+      opacity: 1;
+      transform: translateX(0);
+    }
+  }
+  
+  /* Pulse animation for hints */
+  .hint-pulse {
+    animation: hintPulse 2s ease-in-out infinite;
+  }
+  
+  @keyframes hintPulse {
+    0%, 100% {
+      opacity: 0.7;
+    }
+    50% {
+      opacity: 1;
+    }
+  }
+  
+  /* Subtle pulse for CTA buttons */
+  .animate-pulse-subtle {
+    animation: pulseShadow 2.5s ease-in-out infinite;
+  }
+  
+  @keyframes pulseShadow {
+    0%, 100% {
+      box-shadow: 0 4px 20px rgba(0, 100, 255, 0.4);
+    }
+    50% {
+      box-shadow: 0 6px 28px rgba(0, 100, 255, 0.55);
+    }
+  }
+
+  /* Landing — staggered fade-in */
+  .animate-fade-up {
+    animation: fadeUpLanding 0.6s cubic-bezier(0.4, 0, 0.2, 1) both;
+  }
+  @keyframes fadeUpLanding {
+    from { opacity: 0; transform: translateY(24px); }
+    to   { opacity: 1; transform: translateY(0); }
+  }
+
+  /* Landing — AI badge shimmer */
+  .animate-shimmer {
+    background-size: 200% 100%;
+    animation: shimmer 3s ease-in-out infinite;
+  }
+  @keyframes shimmer {
+    0%   { background-position: 200% 0; }
+    100% { background-position: -200% 0; }
+  }
+
+  /* Landing — AI card glow ring */
+  .ai-glow {
+    box-shadow: 0 0 0 1px hsl(213 100% 50% / 0.15),
+                0 0 20px 0 hsl(213 100% 50% / 0.08);
+  }
+
+  /* [CL-AI-BTN-GLOW-20260308-175200] AI button — strong glow for primary CTA-level AI actions */
+  .ai-glow-strong {
+    box-shadow: 0 0 0 1.5px hsl(213 100% 50% / 0.35),
+                0 0 16px 0 hsl(213 100% 50% / 0.15),
+                0 4px 12px 0 hsl(213 100% 50% / 0.10);
+  }
+
+  /* [CL-AI-BTN-GLOW-20260308-175200] AI badge — shimmer effect for inline AI tags */
+  .ai-badge-shimmer {
+    background-size: 200% 100%;
+    animation: badgeShimmer 2.5s ease-in-out infinite;
+  }
+  @keyframes badgeShimmer {
+    0%   { background-position: 200% 0; }
+    100% { background-position: -200% 0; }
+  }
+
+  /* Landing — hero icon float */
+  .animate-float {
+    animation: softFloat 3s ease-in-out infinite;
+  }
+  @keyframes softFloat {
+    0%, 100% { transform: translateY(0); }
+    50%      { transform: translateY(-8px); }
+  }
+
+  /* Shadow utilities */
+  .shadow-toss-sm {
+    box-shadow: 0 1px 4px 0 rgba(0,0,0,0.03), 0 2px 8px 0 rgba(0,0,0,0.03);
+  }
+  .shadow-primary-glow {
+    box-shadow: 0 4px 20px hsl(213 100% 50% / 0.4);
+  }
+  .shadow-primary-glow-lg {
+    box-shadow: 0 6px 30px hsl(213 100% 50% / 0.5);
+  }
+
+  /* Collapsible expand/collapse animation */
+  .collapsible-content {
+    overflow: hidden;
+  }
+  .collapsible-content[data-state="open"] {
+    animation: slideDown 0.2s ease-out;
+  }
+  .collapsible-content[data-state="closed"] {
+    animation: slideUp 0.2s ease-out;
+  }
+  @keyframes slideDown {
+    from { height: 0; opacity: 0; }
+    to   { height: var(--radix-collapsible-content-height); opacity: 1; }
+  }
+  @keyframes slideUp {
+    from { height: var(--radix-collapsible-content-height); opacity: 1; }
+    to   { height: 0; opacity: 0; }
+  }
+
+  /* [CL-TREE-REDESIGN-20260403] 하이어라키칼 트리 커넥터 */
+  .tree-branch {
+    position: relative;
+    padding-left: 18px;
+  }
+  .tree-branch::before {
+    content: '';
+    position: absolute;
+    left: 7px;
+    top: 0;
+    bottom: 0;
+    width: 1.5px;
+    background: hsl(var(--border));
+  }
+  .tree-branch:last-child::before {
+    bottom: 50%;
+  }
+  .tree-branch::after {
+    content: '';
+    position: absolute;
+    left: 7px;
+    top: 18px;
+    width: 9px;
+    height: 1.5px;
+    background: hsl(var(--border));
+  }
+  /* 카테고리 색상 트리 라인 */
+  .tree-branch-blue::before, .tree-branch-blue::after { background: rgb(96 165 250); }
+  .tree-branch-pink::before, .tree-branch-pink::after { background: rgb(244 114 182); }
+  .tree-branch-amber::before, .tree-branch-amber::after { background: rgb(251 191 36); }
+  .tree-branch-emerald::before, .tree-branch-emerald::after { background: rgb(52 211 153); }
+  .tree-branch-sky::before, .tree-branch-sky::after { background: rgb(56 189 248); }
+  .tree-branch-gray::before, .tree-branch-gray::after { background: rgb(156 163 175); }
+  .tree-branch-slate::before, .tree-branch-slate::after { background: rgb(203 213 225); }
+
+  /* Check completion pop animation */
+  .animate-check-pop {
+    animation: checkPop 0.3s cubic-bezier(0.4, 0, 0.2, 1);
+  }
+  @keyframes checkPop {
+    0%   { transform: scale(1); }
+    50%  { transform: scale(1.2); }
+    100% { transform: scale(1); }
+  }
+
+  /* Limited bounce (2 cycles) */
+  .animate-bounce-limited {
+    animation: bounce 0.5s ease-in-out 2;
+  }
+
+  /* [CL-INSIGHT-CHECK-20260315-160000] 인사이트 체크 파티클 & 카드 퇴장 */
+  .insight-particle {
+    position: absolute;
+    width: 6px;
+    height: 6px;
+    border-radius: 50%;
+    opacity: 0;
+    pointer-events: none;
+  }
+  .insight-particle.is-active {
+    animation: insightParticleBurst 0.5s cubic-bezier(0.4, 0, 0.2, 1) forwards;
+  }
+  @keyframes insightParticleBurst {
+    0%   { opacity: 1; transform: translate(0, 0) scale(1); }
+    100% { opacity: 0; transform: translate(var(--tx), var(--ty)) scale(0.3); }
+  }
+  .insight-card-dismissing {
+    animation: insight-dismiss 0.35s ease-out forwards;
+  }
+  .insight-card-collapsing {
+    overflow: hidden;
+    animation: insight-collapse 0.3s ease-out 0.35s forwards;
+  }
+
+  /* Accessibility — reduced motion */
+  @media (prefers-reduced-motion: reduce) {
+    .animate-fade-up,
+    .animate-shimmer,
+    .ai-badge-shimmer,
+    .animate-float,
+    .animate-pulse-subtle,
+    .animate-bounce,
+    .collapsible-content[data-state="open"],
+    .collapsible-content[data-state="closed"],
+    .animate-check-pop,
+    .animate-bounce-limited,
+    .insight-particle.is-active,
+    .insight-card-dismissing,
+    .insight-card-collapsing,
+    .animate-wc-slide-out-left,
+    .animate-wc-slide-out-right,
+    .animate-wc-winner-pulse,
+    .animate-wc-step-enter {
+      animation: none !important;
+    }
+    .insight-card-dismissing,
+    .animate-wc-slide-out-left,
+    .animate-wc-slide-out-right {
+      opacity: 0;
+    }
+  }
+
+  /* [CL-HONEYMOON-REDESIGN-20260316] Print-friendly styles for itinerary export */
+  @media print {
+    body > *:not(.print-area) { display: none !important; }
+    .print-area { display: block !important; }
+    .no-print { display: none !important; }
+  }
+}
