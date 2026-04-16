@@ -3,7 +3,7 @@ import react from "@vitejs/plugin-react-swc";
 import path from "path";
 
 export default defineConfig({
-  base: "/",
+  base: "/ready-deploy-project-fed759b8/", // [CL-BASE-FIX-20260416-130800] GitHub Pages 서브패스 필수
   server: {
     host: "::",
     port: 8080,
