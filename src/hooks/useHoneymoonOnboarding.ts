@@ -69,7 +69,7 @@ export interface OnboardingState {
 function createInitialState(): OnboardingState {
   const images = generateRandomWorldCupImages();
   return {
-    step: 'welcome',
+    step: 'worldcup', // [CL-SIMPLE-START-20260416-021500] Landing이 welcome 역할 대체
     worldCupRound: 0,
     worldCupSelections: [],
     worldCupBracket: generateBracket(images),
@@ -121,7 +121,7 @@ function saveState(state: OnboardingState, userId?: string): void {
 function computeProgress(state: OnboardingState): number {
   switch (state.step) {
     case 'welcome':  return 0;
-    case 'worldcup': return 5 + Math.round((state.worldCupRound / TOTAL_MATCHES) * 45);
+    case 'worldcup': return Math.round((state.worldCupRound / TOTAL_MATCHES) * 50); // [CL-SIMPLE-START-20260416-021500]
     case 'budget':   return 55;
     // [CL-SKIP-SCHEDULE-20260405-220000] schedule 제거
     case 'loading':  return 65;

@@ -19,7 +19,7 @@ interface OnboardingShellProps {
 // [CL-MECE-TEST-20260330] budget 제거(월드컵 완료 후 되돌리기 차단), loading 추가
 // [CL-HONEYMOON-JOURNEY-20260405-180000] compare/plan 뒤로가기 허용
 // [CL-SKIP-SCHEDULE-20260405-220000] schedule 제거
-const BACK_ENABLED_STEPS: OnboardingStep[] = ['worldcup', 'loading', 'results', 'compare', 'plan'];
+const BACK_ENABLED_STEPS: OnboardingStep[] = ['loading', 'results', 'compare', 'plan']; // [CL-SIMPLE-START-20260416-021500] worldcup 제거
 
 export function OnboardingShell({ step, progress, onBack, onHome, children }: OnboardingShellProps) {
   const showBack = BACK_ENABLED_STEPS.includes(step);

@@ -66,10 +66,10 @@ export const DESTINATION_IMAGES: Record<string, { url: string; thumbUrl: string 
     url: 'https://images.unsplash.com/photo-1609946860441-a51ffcf22208?w=800&q=80',
     thumbUrl: 'https://images.unsplash.com/photo-1609946860441-a51ffcf22208?w=100&q=40',
   },
-  // [CL-IMG-FIX-5DEST-20260408-100500] 실제 코타키나발루(말레이시아 사바) 스카이라인 사진으로 교체
+  // [CL-IMG-BLACKLIST-20260416-021500] Wikimedia 429 차단 → Unsplash로 교체
   'kota-kinabalu': {
-    url: 'https://upload.wikimedia.org/wikipedia/commons/thumb/9/9b/Panoramic_view_of_Kota_Kinabalu_City.jpg/800px-Panoramic_view_of_Kota_Kinabalu_City.jpg',
-    thumbUrl: 'https://upload.wikimedia.org/wikipedia/commons/thumb/9/9b/Panoramic_view_of_Kota_Kinabalu_City.jpg/100px-Panoramic_view_of_Kota_Kinabalu_City.jpg',
+    url: 'https://images.unsplash.com/photo-1626082927389-6cd097cdc6ec?w=800&q=80',
+    thumbUrl: 'https://images.unsplash.com/photo-1626082927389-6cd097cdc6ec?w=100&q=40',
   },
   'nha-trang': {
     url: 'https://images.unsplash.com/photo-1540979388789-6cee28a1cdc9?w=800&q=80',
@@ -153,10 +153,10 @@ export const DESTINATION_IMAGES: Record<string, { url: string; thumbUrl: string 
     url: 'https://images.unsplash.com/photo-1536599018102-9f803c140fc1?w=800&q=80',
     thumbUrl: 'https://images.unsplash.com/photo-1536599018102-9f803c140fc1?w=100&q=40',
   },
-  // [CL-IMG-FIX-5DEST-20260408-100500] 실제 마카오 세인트폴 성당 유적 사진으로 교체
+  // [CL-IMG-BLACKLIST-20260416-021500] Wikimedia 429 차단 → Unsplash로 교체
   'macau': {
-    url: 'https://upload.wikimedia.org/wikipedia/commons/thumb/c/c2/20091003_Macau_Cathedral_of_Saint_Paul_6542.jpg/800px-20091003_Macau_Cathedral_of_Saint_Paul_6542.jpg',
-    thumbUrl: 'https://upload.wikimedia.org/wikipedia/commons/thumb/c/c2/20091003_Macau_Cathedral_of_Saint_Paul_6542.jpg/100px-20091003_Macau_Cathedral_of_Saint_Paul_6542.jpg',
+    url: 'https://images.unsplash.com/photo-1555992828-ca4dbe41d294?w=800&q=80',
+    thumbUrl: 'https://images.unsplash.com/photo-1555992828-ca4dbe41d294?w=100&q=40',
   },
   'karuizawa': {
     url: 'https://images.unsplash.com/photo-1545569341-9eb8b30979d9?w=800&q=80',
@@ -180,10 +180,10 @@ export const DESTINATION_IMAGES: Record<string, { url: string; thumbUrl: string 
     url: 'https://images.unsplash.com/photo-1588416936097-41850ab3d86d?w=800&q=80',
     thumbUrl: 'https://images.unsplash.com/photo-1588416936097-41850ab3d86d?w=100&q=40',
   },
-  // [CL-IMG-FIX-5DEST-20260408-100500] 실제 고아(인도) 팔로렘 해변 일몰 사진으로 교체
+  // [CL-IMG-BLACKLIST-20260416-021500] Wikimedia 429 차단 → Unsplash로 교체
   'goa': {
-    url: 'https://upload.wikimedia.org/wikipedia/commons/thumb/1/19/Palolem_sunset.jpg/800px-Palolem_sunset.jpg',
-    thumbUrl: 'https://upload.wikimedia.org/wikipedia/commons/thumb/1/19/Palolem_sunset.jpg/100px-Palolem_sunset.jpg',
+    url: 'https://images.unsplash.com/photo-1614082242765-7c98ca0f3df3?w=800&q=80',
+    thumbUrl: 'https://images.unsplash.com/photo-1614082242765-7c98ca0f3df3?w=100&q=40',
   },
 
   // ── 유럽 (개별 도시) ──
@@ -341,10 +341,10 @@ export const DESTINATION_IMAGES: Record<string, { url: string; thumbUrl: string 
     url: 'https://images.unsplash.com/photo-1589197331516-4d84b72ebde3?w=800&q=80',
     thumbUrl: 'https://images.unsplash.com/photo-1589197331516-4d84b72ebde3?w=100&q=40',
   },
-  // [CL-IMG-FIX-5DEST-20260408-100500] 실제 팔라우 록아일랜드 공중 촬영 사진으로 교체
+  // [CL-IMG-BLACKLIST-20260416-021500] Wikimedia 429 차단 → Unsplash로 교체
   'palau': {
-    url: 'https://upload.wikimedia.org/wikipedia/commons/thumb/4/4b/Rock-Islands-Palau-1-2016-aerial-view-Luka-Peternel.jpg/800px-Rock-Islands-Palau-1-2016-aerial-view-Luka-Peternel.jpg',
-    thumbUrl: 'https://upload.wikimedia.org/wikipedia/commons/thumb/4/4b/Rock-Islands-Palau-1-2016-aerial-view-Luka-Peternel.jpg/100px-Rock-Islands-Palau-1-2016-aerial-view-Luka-Peternel.jpg',
+    url: 'https://images.unsplash.com/photo-1559128010-7c1ad6e1b6a5?w=800&q=80',
+    thumbUrl: 'https://images.unsplash.com/photo-1559128010-7c1ad6e1b6a5?w=100&q=40',
   },
   'sydney': {
     url: 'https://images.unsplash.com/photo-1506973035872-a4ec16b8e8d9?w=800&q=80',
@@ -392,10 +392,10 @@ export const DESTINATION_IMAGES: Record<string, { url: string; thumbUrl: string 
     url: 'https://images.unsplash.com/photo-1576485290814-1c72aa4bbb8e?w=800&q=80',
     thumbUrl: 'https://images.unsplash.com/photo-1576485290814-1c72aa4bbb8e?w=100&q=40',
   },
-  // [CL-IMG-FIX-5DEST-20260408-100500] 실제 오만 Al Alam Palace(술탄 궁전) 사진으로 교체
+  // [CL-IMG-BLACKLIST-20260416-021500] Wikimedia 429 차단 → Unsplash로 교체
   'oman': {
-    url: 'https://upload.wikimedia.org/wikipedia/commons/thumb/4/44/Al_Alam_Palace.jpg/800px-Al_Alam_Palace.jpg',
-    thumbUrl: 'https://upload.wikimedia.org/wikipedia/commons/thumb/4/44/Al_Alam_Palace.jpg/100px-Al_Alam_Palace.jpg',
+    url: 'https://images.unsplash.com/photo-1578895101408-1a36b834405b?w=800&q=80',
+    thumbUrl: 'https://images.unsplash.com/photo-1578895101408-1a36b834405b?w=100&q=40',
   },
   'abu-dhabi': {
     url: 'https://images.unsplash.com/photo-1512632578888-169bbbc64f33?w=800&q=80',

@@ -98,52 +98,24 @@ export const WORLD_CUP_IMAGES: WorldCupImage[] = [
   },
 ];
 
-// ── [CL-WORLDCUP-QUALITY-20260412-230000] 검증된 Unsplash photo ID 화이트리스트 ──
-// 각 사진의 실제 내용이 해당 여행지를 명확히 대표함을 수동 검증한 ID만 포함.
-// 이 목록에 없는 DESTINATION_IMAGES 엔트리는 자동으로 그래디언트 카드로 폴백.
-//
-// 검증 원칙: 1) 해당 여행지의 랜드마크/대표 풍경이 명확히 보일 것 2) 제네릭 이미지 배제
-const VERIFIED_PHOTO_IDS = new Set<string>([
-  // 동남아
-  '1514282401047', // maldives 수상빌라 일출
-  '1537996194471', // bali 라이스 테라스
-  '1589394815804', // phuket 해변
-  '1507525428034', // boracay 화이트비치
-  '1540202404-a2f29016b523', // koh-samui (전체 ID)
-  // 동아시아 (아이콘 랜드마크)
-  '1540959733332', // tokyo 도시 야경
-  // 유럽
-  '1502602898657', // paris 에펠탑 카페 (WORLD_CUP_IMAGES paris에서 사용 중)
-  '1499856871958', // paris 대안
-  '1570077188670', // santorini 석양
-  '1552832230-c0197dd311b5', // rome 콜로세움 (풀 ID)
-  // 북미 & 중남미
-  '1505852679233', // hawaii 서퍼
-  '1552074284-5e88ef1aef18', // cancun 세노테 (풀 ID)
-  // 오세아니아
-  // (필요 시 추가)
+// ── [CL-IMG-BLACKLIST-20260416-021500] 검증 로직 반전: 화이트리스트 → 블랙리스트 ──
+// 모든 DESTINATION_IMAGES URL을 기본 신뢰, 깨진/불일치만 차단
+// 기존 화이트리스트(12개만 사진) → 블랙리스트(전체 사진, 문제만 차단)
+const BLOCKED_PHOTO_IDS = new Set<string>([
+  // 깨진 URL 발견 시 photo ID 추가
 ]);
 
-/**
- * photoId 추출 헬퍼 — Unsplash URL에서 첫 11자리 숫자 ID만 뽑기
- * (일부 URL은 숫자만, 일부는 숫자-문자열 결합 형태)
- */
 function extractPhotoId(url: string): string | null {
   const m = url.match(/photo-([a-zA-Z0-9_-]+)\?/);
   return m?.[1] ?? null;
 }
 
-/**
- * 특정 photo URL이 검증된 상태인지 확인
- * 짧은 ID(숫자만)와 긴 ID(숫자-문자) 모두 허용
- */
-function isVerifiedPhoto(url: string): boolean {
+function isBlockedPhoto(url: string): boolean {
   const photoId = extractPhotoId(url);
-  if (!photoId) return false;
-  if (VERIFIED_PHOTO_IDS.has(photoId)) return true;
-  // 짧은 접두 숫자 ID만 비교 (e.g., "1514282401047" in "1514282401047-d79a71a590e8")
+  if (!photoId) return false; // Wikimedia 등 비-Unsplash URL은 기본 허용
+  if (BLOCKED_PHOTO_IDS.has(photoId)) return true;
   const shortId = photoId.split('-')[0];
-  return VERIFIED_PHOTO_IDS.has(shortId);
+  return BLOCKED_PHOTO_IDS.has(shortId);
 }
 
 // ── [CL-IMPROVE-7TASKS-20260330] 지역별 그래디언트 ──
@@ -229,9 +201,9 @@ export function generateRandomWorldCupImages(count = 16): WorldCupImage[] {
       return { ...existingImg };
     }
 
-    // [CL-WORLDCUP-QUALITY-20260412-230000] 검증된 이미지만 사진 카드로, 아니면 그래디언트
+    // [CL-IMG-BLACKLIST-20260416-021500] 블랙리스트에 없는 모든 이미지를 사진 카드로 표시
     const imgData = DESTINATION_IMAGES[d.id];
-    if (imgData && isVerifiedPhoto(imgData.url)) {
+    if (imgData && imgData.url && !isBlockedPhoto(imgData.url)) {
       return {
         id: `wc-${d.id}`,
         url: imgData.url,

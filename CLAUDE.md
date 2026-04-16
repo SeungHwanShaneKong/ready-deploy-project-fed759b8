@@ -102,10 +102,11 @@ Plan Mode에서 계획 수립 후 반드시 `ExitPlanMode` 호출. 계획 파일
 **교훈**: 외부 유틸 호출 시 **함수 시그니처 + 리턴 타입을 먼저 확인**하고 쓸 것. 새 파일 작성 시 IDE의 `Go to Definition`으로 검증.
 **How to apply**: 코드 작성 직후 즉시 `tsc --noEmit`으로 타입 검증 (빌드 기다리지 말고).
 
-### L-09: 이미지 매칭은 "신뢰 목록" 방식이 안전
-**증상**: 100개 여행지 Unsplash URL 중 일부가 generic 이미지 → 라벨 불일치.
-**교훈**: URL 존재성·중복 체크만으로는 semantic matching을 보장 못함. **수동 검증된 화이트리스트(Set)** 를 관리하고, 불확실한 것은 그래디언트 fallback.
-**How to apply**: `VERIFIED_PHOTO_IDS` Set + `isVerifiedPhoto(url)` 헬퍼로 게이팅.
+### L-09: 이미지 매칭은 블랙리스트 방식으로 전환
+**기존**: VERIFIED_PHOTO_IDS 화이트리스트 → 96개 중 12개만 사진 표시 (82% gradient)
+**변경**: BLOCKED_PHOTO_IDS 블랙리스트 → 큐레이팅된 URL 전체 기본 신뢰
+**교훈**: 개별 큐레이팅된 이미지 URL은 기본 신뢰. 문제 발견 시만 블랙리스트에 추가.
+**How to apply**: 새 이미지 추가 시 URL 접근성만 확인, 기본 허용. 불일치 발견 시 BLOCKED_PHOTO_IDS에 추가.
 
 ### L-10: Background command에 `timeout`만으로 불충분 — 명시적 kill 필요
 **증상**: `vite preview` 백그라운드 실행 → 작업 완료 후에도 node 프로세스가 남아 메모리 점유.

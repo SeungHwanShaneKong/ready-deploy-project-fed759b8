@@ -4,7 +4,7 @@
  * 비로그인 사용자도 접근 가능 (anonymous UUID 사용)
  */
 import { useRef, useEffect, useMemo } from 'react';
-import { useNavigate } from 'react-router-dom';
+import { useNavigate, useSearchParams } from 'react-router-dom';
 import { CheckCircle2, RotateCcw, Share2 } from 'lucide-react';
 import { Button } from '@/components/ui/button';
 import { useAuth } from '@/hooks/useAuth';
@@ -12,7 +12,6 @@ import { useSEO } from '@/hooks/useSEO';
 import { useHoneymoonPlanner } from '@/hooks/useHoneymoonPlanner';
 import { useHoneymoonOnboarding } from '@/hooks/useHoneymoonOnboarding';
 import { OnboardingShell } from '@/components/honeymoon/onboarding/OnboardingShell';
-import { WelcomeStep } from '@/components/honeymoon/onboarding/WelcomeStep';
 import { WorldCupStep } from '@/components/honeymoon/onboarding/WorldCupStep';
 import { BudgetStep } from '@/components/honeymoon/onboarding/BudgetStep';
 import { LoadingStep } from '@/components/honeymoon/onboarding/LoadingStep';
@@ -54,6 +53,7 @@ function getAnonymousId(): string {
 
 export default function Honeymoon() {
   const navigate = useNavigate();
+  const [searchParams] = useSearchParams();
   const { user } = useAuth();
 
   // 로그인 사용자는 user.id, 비로그인은 anonymous UUID
@@ -67,12 +67,16 @@ export default function Honeymoon() {
 
   const onboarding = useHoneymoonOnboarding(userId);
 
-  // 페이지 진입 시 항상 처음부터
+  // [CL-SIMPLE-START-20260416-021500] 페이지 진입 시 처음부터 / ?skip=1이면 완료 화면
   const initialMountRef = useRef(true);
   useEffect(() => {
     if (initialMountRef.current) {
       initialMountRef.current = false;
-      onboarding.resetOnboarding();
+      if (searchParams.get('skip') === '1') {
+        onboarding.completeOnboarding();
+      } else {
+        onboarding.resetOnboarding();
+      }
     }
     // eslint-disable-next-line react-hooks/exhaustive-deps
   }, []);
@@ -92,12 +96,7 @@ export default function Honeymoon() {
         onBack={onboarding.goBack}
         onHome={() => navigate('/')}
       >
-        {onboarding.state.step === 'welcome' && (
-          <WelcomeStep
-            onStart={() => onboarding.goToStep('worldcup')}
-            onSkip={onboarding.completeOnboarding}
-          />
-        )}
+        {/* [CL-SIMPLE-START-20260416-021500] WelcomeStep 제거 — Landing.tsx가 역할 대체 */}
         {onboarding.state.step === 'worldcup' && onboarding.currentMatch && (
           <WorldCupStep
             match={onboarding.currentMatch}
