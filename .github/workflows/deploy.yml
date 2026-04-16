@@ -26,7 +26,9 @@ jobs:
 
       - run: npm install
 
-      - run: npm run build
+      # [CL-BASE-FIX-20260416-143000] vite.config.ts base="/"는 Lovable 프리뷰용
+      # GitHub Pages 서브패스 배포 시 빌드 타임에 오버라이드
+      - run: npx vite build --base /ready-deploy-project-fed759b8/
 
       - name: SPA fallback (copy index.html to 404.html)
         run: cp dist/index.html dist/404.html
