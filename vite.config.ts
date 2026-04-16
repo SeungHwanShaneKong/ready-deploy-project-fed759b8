@@ -3,7 +3,8 @@ import react from "@vitejs/plugin-react-swc";
 import path from "path";
 
 export default defineConfig({
-  base: "/ready-deploy-project-fed759b8/", // [CL-BASE-FIX-20260416-130800] GitHub Pages 서브패스 필수
+  // [CL-BASE-FIX-20260416-134500] Lovable 프리뷰는 "/" 필수. GitHub Pages 배포 시 deploy.yml에서 base 오버라이드.
+  base: "/",
   server: {
     host: "::",
     port: 8080,
