@@ -12,6 +12,7 @@ import {
 } from '@/lib/kakao-browser';
 import { EDGE_FUNCTION_URL, EDGE_FUNCTION_KEY } from '@/lib/edge-function-config';
 import { useSEO } from '@/hooks/useSEO';
+import { goHome } from '@/lib/utils';
 
 const DEV_TEST_EMAIL = 'dev-test@wedsem-local.dev';
 const DEV_TEST_PASSWORD = 'devtest123456';
@@ -227,7 +228,7 @@ export default function Auth() {
         <Button
           variant="ghost"
           size="icon"
-          onClick={() => navigate('/')}
+          onClick={goHome}
           className="rounded-full"
         >
           <ArrowLeft className="h-5 w-5" />

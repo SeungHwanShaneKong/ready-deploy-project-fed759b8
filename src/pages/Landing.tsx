@@ -7,7 +7,7 @@ import { useState, useEffect, useCallback } from 'react';
 import { useNavigate } from 'react-router-dom';
 import { Button } from '@/components/ui/button';
 import {
-  Plane, Sparkles, Heart,
+  Plane, Sparkles, Heart, Home,
   ExternalLink, Copy, CheckCircle2,
 } from 'lucide-react';
 import {
@@ -17,6 +17,7 @@ import {
   getAppSpecificGuide,
 } from '@/lib/kakao-browser';
 import { useSEO } from '@/hooks/useSEO';
+import { goHome } from '@/lib/utils';
 
 export default function Landing() {
   const navigate = useNavigate();
@@ -90,7 +91,15 @@ export default function Landing() {
 
   // ── [CL-SIMPLE-START-20260416-021500] 심플 랜딩 (WelcomeStep 통합) ──
   return (
-    <div className="min-h-screen bg-background flex flex-col items-center justify-center px-5">
+    <div className="min-h-screen bg-background flex flex-col items-center justify-center px-5 relative">
+      {/* [CL-HOME-URL-20260416-140000] Home 버튼 (WedSem 메인) */}
+      <button
+        onClick={goHome}
+        className="absolute top-4 right-4 p-2 text-muted-foreground hover:text-foreground transition-colors z-10"
+        aria-label="홈으로"
+      >
+        <Home className="w-5 h-5" />
+      </button>
       <div className="max-w-lg w-full text-center">
         {/* Floating emoji */}
         <div className="relative mb-8 animate-fade-up">

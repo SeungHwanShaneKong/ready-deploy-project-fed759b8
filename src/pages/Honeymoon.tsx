@@ -8,6 +8,7 @@ import { useNavigate, useSearchParams } from 'react-router-dom';
 import { CheckCircle2, RotateCcw, Share2 } from 'lucide-react';
 import { Button } from '@/components/ui/button';
 import { useAuth } from '@/hooks/useAuth';
+import { goHome } from '@/lib/utils';
 import { useSEO } from '@/hooks/useSEO';
 import { useHoneymoonPlanner } from '@/hooks/useHoneymoonPlanner';
 import { useHoneymoonOnboarding } from '@/hooks/useHoneymoonOnboarding';
@@ -94,7 +95,7 @@ export default function Honeymoon() {
         step={onboarding.state.step}
         progress={onboarding.progress}
         onBack={onboarding.goBack}
-        onHome={() => navigate('/')}
+        onHome={goHome} // [CL-HOME-URL-20260416-140000]
       >
         {/* [CL-SIMPLE-START-20260416-021500] WelcomeStep 제거 — Landing.tsx가 역할 대체 */}
         {onboarding.state.step === 'worldcup' && onboarding.currentMatch && (
@@ -222,7 +223,7 @@ export default function Honeymoon() {
           <Button
             variant="ghost"
             size="sm"
-            onClick={() => navigate('/')}
+            onClick={goHome}
             className="w-full text-xs text-muted-foreground"
           >
             홈으로 돌아가기
